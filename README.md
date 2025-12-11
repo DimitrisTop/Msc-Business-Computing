@@ -27,6 +27,23 @@ See [Semester-1/README.md](Semester-1/README.md) for details about first semeste
 2. Add your files to the relevant project folder
 3. Update the README files as needed
 
+### Adding Java Files
+
+Java source files (`.java`) can be added directly to any project directory:
+
+1. Create or copy your `.java` files into the appropriate project folder
+2. Stage the files: `git add <filename>.java`
+3. Commit: `git commit -m "Add Java source files"`
+4. Push: `git push`
+
+**Note**: The repository's `.gitignore` is configured to:
+- ✅ **Allow** Java source files (`.java`)
+- ❌ **Exclude** compiled class files (`.class`)
+- ❌ **Exclude** JAR files and other build artifacts
+- ❌ **Exclude** IDE configuration files
+
+Example Java file can be found at: `Semester-1/Projects/Project1/HelloWorld.java`
+
 ## Additional Semesters
 
 To add additional semesters, create new directories following the same pattern:
