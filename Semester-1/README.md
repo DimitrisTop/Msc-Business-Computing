@@ -4,7 +4,7 @@ This directory contains all coursework, projects, and materials for Semester 1 o
 
 ## Structure
 
-- **Projects/**: Contains all semester projects
+- **12/**: Contains all semester projects
   - Project1: First semester project
   - Project2: Second semester project
 
