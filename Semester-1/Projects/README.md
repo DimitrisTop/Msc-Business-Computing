@@ -1,4 +1,4 @@
-# Projects
+# Programming-Software-Technology-in-Business
 
 This directory contains all projects for Semester 1.
 
