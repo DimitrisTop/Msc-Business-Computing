@@ -2,7 +2,6 @@
 
 This directory contains all projects for Semester 1.
 
-## Projects
 
 - **Project1/**: First project of the semester
 - **Project2/**: Second project of the semester
