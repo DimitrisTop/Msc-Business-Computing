@@ -30,6 +30,10 @@ public class Main {
             System.out.println( c.getName() + ", " + c.calcCost());
         }
 
+        // Keno gia readability
+        System.out.println("");
+
+        System.out.println("Please enter the code of an insurance:");
         int searchInsurance = input.nextInt();
         // Adeiasma
         input.nextLine();
