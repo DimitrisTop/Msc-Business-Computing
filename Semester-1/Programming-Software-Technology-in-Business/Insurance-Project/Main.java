@@ -51,7 +51,6 @@ public class Main {
         if(foundInsurance == false)
             System.out.println("There is no insurance "+ searchInsurance);
 
-
     }
 
 }
