@@ -1,0 +1,93 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+nav {
+    background-color: #efefef;
+    text-decoration: none;
+    padding-right: 20px;
+    flex: 1;
+}
+
+.navbar {
+    list-style-type: none;
+    padding: 15px 25px;
+}
+
+.navbar li {
+    display: block;
+    margin-bottom: 13px;
+}
+
+header {
+
+    background-color: #7c0000;
+    padding: 0.10rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    width: 100%;
+}
+
+.big-wrapper {
+
+    border-style: solid;
+    border-width: 7px;
+    padding: 1rem;
+    margin: 5px 0px 12px 15px;
+    flex: 6;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.second-wrapper{
+    display: flex;;
+}
+
+.danger{
+    background-color: darkorange;
+    color: white;
+    padding: 5px 5px 5px  15px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.band-image {
+    width: auto;
+    height: auto;
+    flex-wrap: wrap;
+    margin: 0px 15px 0px 0px;
+}
+
+footer  {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0.1em 0;
+    width: 100%;
+}
+
+/*  ΕΠΙΚΟΙΝΩΝΙΑ    */
+
+.contact-header {
+    text-transform: none;
+}
+
+.field-for-input {
+    display: block;
+    margin: 1px 0px 10px 0px;
+}
+
+fieldset {
+    border-style: none;
+    margin: 12px 0;
+    padding: 3px 0;
+}
+
+fieldset   label {
+    display: flex;
+}

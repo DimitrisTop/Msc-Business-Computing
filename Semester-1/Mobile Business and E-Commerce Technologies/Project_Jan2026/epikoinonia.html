@@ -2,17 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Metal Band</title>
+    <link rel="stylesheet" href="jan2026.css">
+
+
 </head>
 <body>
+<header class="contact-header">
+    <h1>Επικοινωνία </h1>
+</header>
 
 <nav>
-
     <ul class="navbar">
         <li><a  href="index.html">Αρχική</a> </li>
         <li> <a  href="epikoinonia.html">Επικοινωνία </a> </li>
     </ul>
 </nav>
 
+<section class="big-wrapper">
+    <form action="">
+        
+            <label for="full-name" >Ονοματεπώνυμο</label>
+            <input type="text" id="full-name" name="name" class="field-for-input" required>
+        
+        <fieldset>
+            <legend>Θα ήθελα να ενημερώνομαι για:</legend>
+            
+            <label>
+                    <input type="checkbox" id="tours" name="newsletter" value="tour" >Νέες περιοδίες των
+                Disturbed
+            </label>
+            
+            <label>
+                <input type="checkbox" id="merchandise" name="newsletter" value="merchandise">Νέο merchandise υλικό
+            </label>
+            
+            <label>
+                <input type="checkbox" id="pre-sale" name="newsletter" value="pre-sale">Προ-πώληση εισιτηρίων
+            </label>
+            
+        </fieldset>
+        
+        <label for="e-mail">E-mail επικοινωνίας</label>
+        <input type="email" id="e-mail" name="e-mail" class="field-for-input" required>
+        
+        <button id="my-submit" type="submit" class="upovoli">Πατήστε για Υποβολή</button>
+        <button id="my-reset" type="reset" class="katharismos">Καθρασιμός</button>
+        
+        
+    </form>
+    
+
+</section>
+
+<footer>
+    <p>Δημήτρης - Copyright &copy; 2021 - ΠαΜακ</p>
+</footer>
 </body>
 </html>
