@@ -1,31 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <title>Used Cars Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
+
 <body>
-<section>
+
+<section class="big_wrapper">
     <h1>Πίνακας στοιχείων</h1>
-    <table>
+    <input type="file" onchange="readFile(this)" class="selectFileButton">
+    <button onclick="" class="extra_btn" id="add_row">+ Προσθήκη Νέας Εγγραφής</button>
+    <button onclick="" class="extra_btn" id="edit_row">Επεξεργασία</button>
+    <button onclick="" class="extra_btn" id="download_csv">💾 Download csv</button>
+    <button onclick="" class="extra_btn" id="del">Διαγραφή</button>
+    
+    <h2>Στήλες: </h2>
+    <section id="checkbox_area" style="padding: 10px; background: #f0f0f0; margin-bottom: 10px;">
+        <label> <input type="checkbox" checked onchange="toggleColumn(0)"> Μάρκα</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(1)"> Μοντέλο</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(2)"> Χρονολογία</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(3)"> Χιλιόμετρα</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(4)"> Τύπος Καύσης</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(5)"> Κινητήρας</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(6)"> Συστ. Μετάδοσης</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(7)"> Χρώμα Εξ.</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(8)"> Χρώμα Εσ.</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(9)"> Ατυχήματα</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(10)"> Ιδιοκτησία</label>
+        <label><input type="checkbox" checked onchange="toggleColumn(11)"> Τιμή</label>
+    </section>
+
+    <table id="my_table">
         <thead>
-            <tr>
+            <tr id="column_titles">
                 <th>Μάρκα</th>
                 <th>Μοντέλο</th>
                 <th>Χρονολογία</th>
                 <th>Χιλιόμετρα</th>
-                <th>Τύπος καύσης</th>
+                <th>Τύπος Καύσης</th>
                 <th>Κινητήρας</th>
-                <th>Transmision</th>
+                <th>Συστ. Μετάδοσης</th>
                 <th>Χρώμα Εξ.</th>
                 <th>Χρώμα Εσ.</th>
-                <th>Ατυχήαμτα</th>
-                <th>Clean_title</th>
+                <th>Ατυχήματα</th>
+                <th>Ιδιοκτησία</th>
                 <th>Τιμή</th>
             </tr>
         </thead>
+        <tbody id="t_body">
+        
+        </tbody>
     </table>
-    
 </section>
+
 </body>
 </html>
