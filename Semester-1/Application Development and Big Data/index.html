@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -13,13 +16,13 @@
 <section class="big_wrapper">
     <h1>Πίνακας στοιχείων</h1>
     <input type="file" onchange="readFile(this)" class="selectFileButton">
-    <button onclick="" class="extra_btn" id="add_row">+ Προσθήκη Νέας Εγγραφής</button>
-    <button onclick="" class="extra_btn" id="edit_row">Επεξεργασία</button>
-    <button onclick="" class="extra_btn" id="download_csv">💾 Download csv</button>
-    <button onclick="" class="extra_btn" id="del">Διαγραφή</button>
+    <button type="button" class="extra_btn" id="add_row">+ Προσθήκη Νέας Εγγραφής</button>
+    <button type="button" class="extra_btn" id="edit_row">Επεξεργασία</button>
+    <button type="button" onclick="downloadCSV()" class="extra_btn" id="download_csv">Αποθήκευση</button>
+    <button type="button" class="extra_btn" id="del">Διαγραφή</button>
     
     <h2>Στήλες: </h2>
-    <section id="checkbox_area" style="padding: 10px; background: #f0f0f0; margin-bottom: 10px;">
+    <section id="checkbox_area" >
         <label> <input type="checkbox" checked onchange="toggleColumn(0)"> Μάρκα</label>
         <label><input type="checkbox" checked onchange="toggleColumn(1)"> Μοντέλο</label>
         <label><input type="checkbox" checked onchange="toggleColumn(2)"> Χρονολογία</label>

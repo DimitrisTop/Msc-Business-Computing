@@ -1,41 +1,94 @@
 // Εισαγωγή csv
+// function readFile(input) {
+//
+//     let reader = new FileReader(); // 1. Δημιουργούμε έναν "Αναγνώστη" (FileReader)
+//     reader.readAsText(input.files[0]);  // 2. Του λέμε ποιο αρχείο να διαβάσει (αυτό που διάλεξε ο χρήστης)
+//
+//     reader.onload = function () { // 3. Του λέμε: "Όταν τελειώσεις το διάβασμα, κάνε τα εξής:"
+//
+//         let text = reader.result; // Πάρε όλο το κείμενο του αρχείου
+//
+//         let rows = text.split("\n"); // Σπάσε το κείμενο σε γραμμές (εκεί που αλλάζει η σειρά)
+//
+//         let htmlContent = ""; // Εδώ θα αποθηκεύουμε το HTML που φτιάχνουμε σιγά-σιγά
+//
+//         // 4. Ξεκίνα να διαβάζεις τις γραμμές μία-μία
+//         for (let i = 1; i < rows.length; i++) { // Ξεκινάμε από το 1 (i=1) για να προσπεράσουμε την πρώτη γραμμή με τους τίτλους
+//
+//             let row = rows[i].trim(); // trim() = αφαίρεσε τυχόν κενά στην αρχή/τέλος
+//
+//             if (row !== "") { // Αν η γραμμή δεν είναι άδεια
+//
+//                 let columns = row.split(","); // Σπάσε τη γραμμή σε στήλες (εκεί που έχει κόμμα)
+//
+//                 htmlContent += "<tr>"; // Ξεκίνα να χτίζεις τη σειρά του πίνακα
+//
+//                 // Για κάθε στήλη, φτιάξε ένα κελί (td)
+//                  for (let j = 0; j < columns.length; j++) {
+//                     let cellData = columns[j];
+//                     htmlContent += "<td>" + cellData + "</td>";
+//                  }
+//                 htmlContent += "</tr>";
+//             }
+//         }
+//
+//         document.getElementById("t_body").innerHTML = htmlContent; // 5. Τέλος, "πέτα" όλο το HTML που φτιάξαμε μέσα
+//         // στο <tbody> της σελίδας
+//     };
+// }
+
 function readFile(input) {
+    let reader = new FileReader();
+    reader.readAsText(input.files[0]);
 
-    let reader = new FileReader(); // 1. Δημιουργούμε έναν "Αναγνώστη" (FileReader)
-    reader.readAsText(input.files[0]);  // 2. Του λέμε ποιο αρχείο να διαβάσει (αυτό που διάλεξε ο χρήστης)
+    reader.onload = function () {
+        let text = reader.result;
+        let rows = text.split("\n");
+        let htmlContent = "";
 
-    reader.onload = function () { // 3. Του λέμε: "Όταν τελειώσεις το διάβασμα, κάνε τα εξής:"
+        for (let i = 1; i < rows.length; i++) {
+            let row = rows[i].trim();
 
-        let text = reader.result; // Πάρε όλο το κείμενο του αρχείου
+            if (row !== "") {
+                // Properly parse CSV by handling quoted values
+                let columns = parseCSVRow(row);
+                //
 
-        let rows = text.split("\n"); // Σπάσε το κείμενο σε γραμμές (εκεί που αλλάζει η σειρά)
-
-        let htmlContent = ""; // Εδώ θα αποθηκεύουμε το HTML που φτιάχνουμε σιγά-σιγά
-
-        // 4. Ξεκίνα να διαβάζεις τις γραμμές μία-μία
-        for (let i = 1; i < rows.length; i++) { // Ξεκινάμε από το 1 (i=1) για να προσπεράσουμε την πρώτη γραμμή με τους τίτλους
-
-            let row = rows[i].trim(); // trim() = αφαίρεσε τυχόν κενά στην αρχή/τέλος
-
-            if (row !== "") { // Αν η γραμμή δεν είναι άδεια
-
-                let columns = row.split(","); // Σπάσε τη γραμμή σε στήλες (εκεί που έχει κόμμα)
-
-                htmlContent += "<tr>"; // Ξεκίνα να χτίζεις τη σειρά του πίνακα
-
-                // Για κάθε στήλη, φτιάξε ένα κελί (td)
-                 for (let j = 0; j < columns.length; j++) {
-                    let cellData = columns[j];
-                    htmlContent += "<td>" + cellData + "</td>";
-                 }
+                htmlContent += "<tr>";
+                for (let j = 0; j < columns.length; j++) {
+                    htmlContent += "<td>" + columns[j] + "</td>";
+                }
                 htmlContent += "</tr>";
             }
         }
 
-        document.getElementById("t_body").innerHTML = htmlContent; // 5. Τέλος, "πέτα" όλο το HTML που φτιάξαμε μέσα
-        // στο <tbody> της σελίδας
+        document.getElementById("t_body").innerHTML = htmlContent;
     };
 }
+
+// Helper function to parse CSV rows correctly
+function parseCSVRow(row) {
+    let columns = [];
+    let current = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < row.length; i++) {
+        let char = row[i];
+
+        if (char === '"') {
+            insideQuotes = !insideQuotes; // Toggle quote mode
+        } else if (char === "," && !insideQuotes) {
+            columns.push(current.trim()); // Save column and reset
+            current = "";
+        } else {
+            current += char;
+        }
+    }
+
+    columns.push(current.trim()); // Don't forget the last column
+    return columns;
+}
+
 
 // Διαγραφή
 let selectedRow = null;
@@ -78,7 +131,7 @@ document.getElementById('edit_row').addEventListener('click', function (e) {
 
 });
 
-// Απόκρυψη στήλης
+
 // let getTitles = document.getElementById('column_titles').children;
 // console.log(getTitles)
 // let showBoxes = document.querySelector('.checkboxes')
@@ -140,8 +193,7 @@ document.getElementById('edit_row').addEventListener('click', function (e) {
 //     }
 // });
 
-// Συνάρτηση που κρύβει/εμφανίζει μια στήλη
-// Το "colIndex" είναι ο αριθμός της στήλης (0, 1, 2...)
+// Απόκρυψη στήλης
 function toggleColumn(colIndex) {
 
     let table = document.getElementById('my_table');
@@ -167,3 +219,43 @@ function toggleColumn(colIndex) {
         }
     }
 }
+
+
+// CSV
+function downloadCSV() {
+    // Get all table rows
+    let rows = document.getElementsByTagName('tr');
+    let csv_data = [];
+
+    // Loop through each row
+    for (let i = 0; i < rows.length; i++) {
+        let cols = rows[i].querySelectorAll('td,th');
+        let csvrow = [];
+
+        // Loop through each cell in the row
+        for (let j = 0; j < cols.length; j++) {
+            csvrow.push(cols[j].innerHTML);
+        }
+
+        // Join cells with comma
+        csv_data.push(csvrow.join(","));
+    }
+
+    // Join all rows with new line
+    let csv_content = csv_data.join('\n');
+
+    // Create a blob (file) from the CSV data
+    let blob = new Blob([csv_content], { type: 'text/csv' });
+
+    // Create a download link
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement('a');
+    a.href = url;
+    a.download = 'table.csv'; // File name
+    document.body.appendChild(a);
+    a.click(); // Click to download
+    document.body.removeChild(a); // Clean up
+}
+
+// Προσθήκη Νέας Εγγραφής
+
