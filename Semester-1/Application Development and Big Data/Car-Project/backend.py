@@ -65,7 +65,7 @@ try:
     df_measurables.show()
 
     # Overwrite
-    # df_measurables.write.csv("Output_q4", header=True, mode="overwrite")
+    df_measurables.write.csv("Output_q4", header=True, mode="overwrite")
 
     # Ερώτηση 5
     df_sales_per_brand = df_measurables.groupby("brand").count()
@@ -86,7 +86,7 @@ try:
     df_final = df_teliko.sort("min(value)")
 
     # Overwrite
-    # df_final.write.csv("Ζητούμενο_2", header=True, mode="overwrite")
+    df_final.write.csv("Ζητούμενο_2", header=True, mode="overwrite")
 
 
 
