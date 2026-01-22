@@ -9,7 +9,6 @@ public class Main {
         // a
         FilmProgram fm = new FilmProgram();
 
-
         // b
         Scanner input = new Scanner(System.in);
 

@@ -38,7 +38,6 @@ public class Main {
 
         InputFrame form = new InputFrame(schools);
 
-//        school1.printTeachers();
 
     }
 
